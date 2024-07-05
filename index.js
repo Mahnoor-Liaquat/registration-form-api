@@ -5,7 +5,11 @@ const RegisterModel = require('./models/Register')
 const app = express();
 const cors = require("cors")
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: ["https://registration-form-mern.vercel.app/"],
+    Methods:["GET", "POST", "PUT", "DELETE"],
+    Credentials: true
+}))
 
 let connectToDatabase = require("./connectDB")
 mongoose.set("strictQuery", false);
